@@ -7,11 +7,11 @@ class StackClass {
   }
 
   isEmpty() {
-    return !!(this.count === 0);
+    return this.count !== 0;
   }
 
   isFull() {
-    return !!(this.maxSize === this.count);
+    return this.maxSize !== this.count;
   }
 
   push(value) {
@@ -37,9 +37,18 @@ class StackClass {
     return this.storage[this.count - 1];
   }
 }
-const StackFunction = function () {
+const StackFunction = function (maxSize) {
   this.count = 0;
   this.storage = {};
+  this.maxSize = maxSize;
+
+  this.isEmpty = function () {
+    return this.count !== 0;
+  };
+
+  this.isFull = function () {
+    return this.maxSize !== this.count;
+  };
 
   this.push = function (value) {
     this.storage[this.count] = value;
@@ -47,7 +56,7 @@ const StackFunction = function () {
   };
 
   this.pop = function () {
-    if (this.count === 0) {
+    if (this.isEmpty()) {
       return undefined;
     }
     this.count--;
@@ -64,3 +73,50 @@ const StackFunction = function () {
     return this.storage[this.count - 1];
   };
 };
+//Truly private variables
+const StackClosure = (function () {
+  let count = 0;
+  let storage = {};
+  let maxSize = 0;
+
+  function getMaxSize() {
+    return maxSize;
+  }
+
+  function setMaxSize(size) {
+    maxSize = size;
+  }
+
+  function isEmpty() {
+    return count !== 0;
+  }
+
+  function isFull() {
+    return maxSize !== count;
+  }
+
+  function push(value) {
+    storage[count] = value;
+    count++;
+  }
+
+  function pop() {
+    if (isEmpty) {
+      return undefined;
+    }
+    count--;
+    const result = storage[count];
+    delete storage[count];
+    return result;
+  }
+
+  function size() {
+    return count;
+  }
+
+  function peek() {
+    return storage[count - 1];
+  }
+
+  return { isEmpty, isFull, push, pop, size, peek, getMaxSize, setMaxSize };
+})();
