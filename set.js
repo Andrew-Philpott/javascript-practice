@@ -75,7 +75,7 @@ class SetClass {
     });
   }
 }
-const SetFunction = function () {
+function SetFunction() {
   this.collection = [];
 
   this.has = function (element) {
@@ -145,7 +145,7 @@ const SetFunction = function () {
       return otherSet.has(val);
     });
   };
-};
+}
 
 const SetClosure = (function () {
   let collection = [];

@@ -7,11 +7,11 @@ class StackClass {
   }
 
   isEmpty() {
-    return this.count !== 0;
+    return this.count === 0;
   }
 
   isFull() {
-    return this.maxSize !== this.count;
+    return this.maxSize === this.count;
   }
 
   push(value) {
@@ -37,17 +37,17 @@ class StackClass {
     return this.storage[this.count - 1];
   }
 }
-const StackFunction = function (maxSize) {
+function StackFunction(maxSize) {
   this.count = 0;
   this.storage = {};
   this.maxSize = maxSize;
 
   this.isEmpty = function () {
-    return this.count !== 0;
+    return this.count === 0;
   };
 
   this.isFull = function () {
-    return this.maxSize !== this.count;
+    return this.maxSize === this.count;
   };
 
   this.push = function (value) {
@@ -72,7 +72,7 @@ const StackFunction = function (maxSize) {
   this.peek = function () {
     return this.storage[this.count - 1];
   };
-};
+}
 //Truly private variables
 const StackClosure = (function () {
   let count = 0;
@@ -88,11 +88,11 @@ const StackClosure = (function () {
   }
 
   function isEmpty() {
-    return count !== 0;
+    return count === 0;
   }
 
   function isFull() {
-    return maxSize !== count;
+    return maxSize === count;
   }
 
   function push(value) {
