@@ -1,14 +1,40 @@
+//element {name: somename, priority: 1}
+
 function PriorityQueue() {
-  let collection = [];
+  this.collection = [];
+
+  this.front = function () {
+    return this.collection[0];
+  };
+
+  this.size = function () {
+    return this.collection.length;
+  };
 
   this.isEmpty = function () {
-    return collection.length === 0;
+    return this.collection.length === 0;
   };
 
   this.enqueue = function (element) {
     if (this.isEmpty()) {
-      collection.push(element);
+      this.collection.push(element);
+    } else {
+      let isAdded = false;
+      for (let i = 0; i < this.collection.length; i++) {
+        if (element.priority < this.collection[i].priority) {
+          this.collection.splice(i, 0, element);
+          isAdded = true;
+          break;
+        }
+      }
+      if (!isAdded) {
+        this.collection.push(element);
+      }
     }
+  };
+
+  this.dequeue = function () {
+    return this.collection.shift();
   };
 }
 export default { PriorityQueue };
