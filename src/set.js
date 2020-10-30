@@ -1,4 +1,4 @@
-class SetClass {
+export class SetClass {
   constructor() {
     this.collection = [];
   }
@@ -75,7 +75,7 @@ class SetClass {
     });
   }
 }
-function SetFunction() {
+export function SetFunction() {
   this.collection = [];
 
   this.has = function (element) {
@@ -147,7 +147,7 @@ function SetFunction() {
   };
 }
 
-const SetClosure = (function () {
+export const SetClosure = (function () {
   let collection = [];
 
   function has(element) {

@@ -1,4 +1,4 @@
-class QueueClass {
+export class QueueClass {
   constructor() {
     this.collection = [];
   }
@@ -23,7 +23,7 @@ class QueueClass {
   }
 }
 
-function QueueFunction() {
+export function QueueFunction() {
   this.collection = [];
 
   this.enqueue = function (element) {
@@ -47,7 +47,7 @@ function QueueFunction() {
   };
 }
 
-const QueueClosure = (function () {
+export const QueueClosure = (function () {
   let collection = [];
 
   function enqueue(element) {

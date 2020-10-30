@@ -1,8 +1,8 @@
 //Class Implementation
-class StackClass {
+export class StackClass {
   constructor(maxSize) {
     this.count = 0;
-    this.storage = {};
+    this.collection = {};
     this.maxSize = maxSize;
   }
 
@@ -15,7 +15,7 @@ class StackClass {
   }
 
   push(value) {
-    this.storage[this.count] = value;
+    this.collection[this.count] = value;
     this.count++;
   }
 
@@ -24,8 +24,8 @@ class StackClass {
       return undefined;
     }
     this.count--;
-    const result = this.storage[this.count];
-    delete this.storage[this.count];
+    const result = this.collection[this.count];
+    delete this.collection[this.count];
     return result;
   }
 
@@ -34,13 +34,13 @@ class StackClass {
   }
 
   peek() {
-    return this.storage[this.count - 1];
+    return this.collection[this.count - 1];
   }
 }
-function StackFunction(maxSize) {
+export function StackFunction(size) {
   this.count = 0;
-  this.storage = {};
-  this.maxSize = maxSize;
+  this.collection = {};
+  this.maxSize = size;
 
   this.isEmpty = function () {
     return this.count === 0;
@@ -51,7 +51,7 @@ function StackFunction(maxSize) {
   };
 
   this.push = function (value) {
-    this.storage[this.count] = value;
+    this.collection[this.count] = value;
     this.count++;
   };
 
@@ -60,8 +60,8 @@ function StackFunction(maxSize) {
       return undefined;
     }
     this.count--;
-    const result = this.storage[this.count];
-    delete this.storage[this.count];
+    const result = this.collection[this.count];
+    delete this.collection[this.count];
     return result;
   };
 
@@ -70,13 +70,13 @@ function StackFunction(maxSize) {
   };
 
   this.peek = function () {
-    return this.storage[this.count - 1];
+    return this.collection[this.count - 1];
   };
 }
 //Truly private variables
-const StackClosure = (function () {
+export const StackClosure = (function () {
   let count = 0;
-  let storage = {};
+  let collection = {};
   let maxSize = 0;
 
   function getMaxSize() {
@@ -96,7 +96,7 @@ const StackClosure = (function () {
   }
 
   function push(value) {
-    storage[count] = value;
+    collection[count] = value;
     count++;
   }
 
@@ -105,8 +105,8 @@ const StackClosure = (function () {
       return undefined;
     }
     count--;
-    const result = storage[count];
-    delete storage[count];
+    const result = collection[count];
+    delete collection[count];
     return result;
   }
 
@@ -115,7 +115,7 @@ const StackClosure = (function () {
   }
 
   function peek() {
-    return storage[count - 1];
+    return collection[count - 1];
   }
 
   return { isEmpty, isFull, push, pop, size, peek, getMaxSize, setMaxSize };
