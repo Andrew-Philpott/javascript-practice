@@ -1,6 +1,7 @@
 import { SetClass, SetFunction, SetClosure } from "./set";
 import { QueueClass, QueueFunction, QueueClosure } from "./queue";
 import { StackClass, StackFunction, StackClosure } from "./stack";
+import { Trie } from "./trie";
 import { BinarySearchTreeClass } from "./binary-search-tree";
 
 console.log("*************SET*************");
@@ -51,3 +52,11 @@ bstClass.print();
 // bstClass.remove(22);
 // bstClass.print();
 console.log("Find max height ", bstClass.findMaxHeight());
+
+console.log("*************TRIE*************");
+const trie = new Trie();
+trie.add("animal");
+trie.add("apple");
+trie.add("add");
+trie.add("as");
+console.log("words in trie ", trie.print());
