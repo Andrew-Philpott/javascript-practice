@@ -62,3 +62,52 @@ export function HashTable() {
     }
   };
 }
+//Given an array of integers, find if the array contains any duplicates.
+//Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+
+export function containsDuplicate(nums) {
+  const hash = {};
+  for (const num of nums) {
+    if (hash[num] !== undefined) return true;
+    hash[num] = num;
+  }
+  return false;
+  //return (nums.length - new Set(nums).size) !== 0
+}
+// export function containsNearbyDuplicate(nums, k) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[j] === nums[i]) {
+//         if (j - i <= k) {
+//           return true;
+//         }
+//       }
+//     }
+//   }
+//   return false;
+// }
+// function containsNearbyDuplicate(nums, k) {
+//   const map = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     let r = nums[i];
+//     if (!map.has(r)) map.set(r, i);
+//     else {
+//       if (i - map.get(r) <= k) return true;
+//       map.set(r, i);
+//     }
+//   }
+//   return false;
+// }
+//faster than map
+export function containsNearbyDuplicate(nums, k) {
+  let hash = {};
+  for (let i = 0; i < nums.length; i++) {
+    let r = nums[i];
+    if (hash[r] === undefined) hash[r] = i;
+    else {
+      if (i - hash[r] <= k) return true;
+      hash[r] = i;
+    }
+  }
+  return false;
+}
