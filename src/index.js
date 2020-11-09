@@ -2,7 +2,7 @@ import { SetClass, SetFunction, SetClosure } from "./set";
 import { QueueClass, QueueFunction, QueueClosure } from "./queue";
 import { StackClass, StackFunction, StackClosure } from "./stack";
 import { TrieWithMap } from "./trie";
-import { BinarySearchTreeClass } from "./binary-search-tree";
+import { BinarySearchTreeClass, StackBinaryTreeOn } from "./binary-search-tree";
 
 console.log("*************SET*************");
 const setFunc = new SetFunction();
@@ -52,6 +52,11 @@ console.log(bstClass.print());
 // bstClass.remove(22);
 // bstClass.print();
 console.log("Find max height ", bstClass.findMaxHeight());
+console.log("binary tree On");
+const bstOn = new StackBinaryTreeOn();
+const arr = [10, 5, 1, 7, 40, 50];
+const root = bstOn.constructTree(arr, arr.length);
+bstOn.printInOrder(root);
 
 console.log("*************TRIE*************");
 const trie = new TrieWithMap();
